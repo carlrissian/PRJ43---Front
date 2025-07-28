@@ -1,20 +1,29 @@
 version: '3.8'
 services:
   prj043-front:
-    image: prj043-finance-front-app-1
-    container_name: prj043-front
     build:
       context: .
-      dockerfile: Dockerfile.front
+      dockerfile: Dockerfile    # Usa tu Dockerfile existente
+    container_name: prj043-front
     expose:
       - "80"
+    networks:
+      - proxy-net
 
   proxy:
     image: nginx:alpine
     container_name: prj043-proxy
     depends_on:
       - prj043-front
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     ports:
       - "8081:80"
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    networks:
+      - proxy-net
+
+networks:
+  proxy-net:
+    driver: bridge
