@@ -1,0 +1,55 @@
+body {
+  background-color: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+.kt-login--signin .kt-grid--hor {
+  background-size: cover;
+  background-position: center;
+}
+
+.kt-login__wrapper {
+  width: 100%;
+  max-width: 400px;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.1);
+  margin: auto;
+}
+
+.kt-login__logo img {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.kt-login__title {
+  margin-bottom: 1.5rem;
+}
+
+.kt-form .input-group {
+  margin-bottom: 1rem;
+}
+
+.kt-form .form-control {
+  display: block;
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.kt-login__actions .btn-brand {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #cf2d30;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+}
