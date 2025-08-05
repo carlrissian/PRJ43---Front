@@ -1,29 +1,17 @@
+
 version: '3.8'
 services:
-  prj043-front:
+  app:
     build:
       context: .
-      dockerfile: Dockerfile    # Usa tu Dockerfile existente
-    container_name: prj043-front
-    expose:
-      - "80"
-    networks:
-      - proxy-net
-
-  proxy:
-    image: nginx:alpine
-    container_name: prj043-proxy
-    depends_on:
-      - prj043-front
+      dockerfile: Dockerfile.dev
+    ports:
+      - "8081:8080"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - VUE_APP_SECURE=false
     extra_hosts:
       - "host.docker.internal:host-gateway"
-    ports:
-      - "8081:80"
-    volumes:
-      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
-    networks:
-      - proxy-net
-
-networks:
-  proxy-net:
-    driver: bridge
